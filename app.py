@@ -6,7 +6,7 @@ from flask import Flask, request, render_template, redirect, url_for
 from PIL import Image
 
 
-os.environ['TESSDATA_PREFIX'] = r'C:\Program Files\Tesseract-OCR/tessdata'
+os.environ['TESSDATA_PREFIX'] = r'/usr/share/tesseract-ocr/4.00/tessdata'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
