@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>解析結果</title>
+</head>
+<body>
+  <h1>解析結果</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>プレイヤー名</th>
+        <!-- 各プレイヤー名を列見出しに -->
+        {% for player in players %}
+        <th>{{ player }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in table_rows %}
+      <tr>
+        <td>{{ loop.index }}枚目</td>
+        {% for score in row %}
+        <!-- scoreを小数点第2位で四捨五入し、小数点第1位まで表示。
+             さらに、負数なら赤字に -->
+        {% set rounded_score = "{:.1f}".format(score) %}
+        {% if score < 0 %}
+          <td style="color: red;">{{ rounded_score }}</td>
+        {% else %}
+          <td>{{ rounded_score }}</td>
+        {% endif %}
+        {% endfor %}
+      </tr>
+      {% endfor %}
+      <!-- 最終行: 合計 -->
+      <tr>
+        <td>合計</td>
+        {% for total in total_scores %}
+        {% set rounded_total = "{:.1f}".format(total) %}
+        {% if total < 0 %}
+          <td style="color: red;"><strong>{{ rounded_total }}</strong></td>
+        {% else %}
+          <td><strong>{{ rounded_total }}</strong></td>
+        {% endif %}
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+  <p><a href="{{ url_for('index') }}">戻る</a></p>
+</body>
+</html>
