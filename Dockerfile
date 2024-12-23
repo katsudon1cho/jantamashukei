@@ -8,6 +8,9 @@ RUN apt-get update && apt-get install -y \
     libgl1 \
     && apt-get clean
 
+# 言語データをコピー
+COPY jpn.traineddata /usr/share/tesseract-ocr/4.00/tessdata/
+
 # 作業ディレクトリを設定
 WORKDIR /app
 
