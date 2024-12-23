@@ -27,7 +27,7 @@ def load_fixed_members(filepath='members.txt'):
 fixed_members = load_fixed_members('members.txt')
 
 # 例: Windows環境の Tesseract 実行ファイルパス
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
